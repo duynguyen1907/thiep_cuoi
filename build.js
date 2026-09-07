@@ -179,12 +179,19 @@ function sceneFloral(P) {
     ctx.fill(); ctx.restore();
   }
   function rose(x, y, r, col, core){
-    for(var i = 6; i >= 1; i--){
-      var rr = r*i/6;
-      var g = ctx.createRadialGradient(x, y, rr*.2, x, y, rr);
-      g.addColorStop(0, core); g.addColorStop(.7, col); g.addColorStop(1, "rgba(255,255,255,0)");
+    // nền loang mềm
+    var g0 = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g0.addColorStop(0, core); g0.addColorStop(.5, col); g0.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = g0; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+    // các cánh lệch tâm, xoay dần — tránh tạo vân tròn đồng tâm
+    for(var i = 0; i < 5; i++){
+      var rr = r * (.80 - i*.13);
+      var a  = i*2.3 + rnd()*.8;
+      var ox = Math.cos(a)*r*.20, oy = Math.sin(a)*r*.20;
+      var g = ctx.createRadialGradient(x+ox, y+oy, 0, x+ox, y+oy, rr);
+      g.addColorStop(0, core); g.addColorStop(.62, col); g.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = g; ctx.beginPath();
-      ctx.arc(x + (i%2 ? rr*.08 : -rr*.08), y + (i%3 ? rr*.06 : -rr*.06), rr, 0, Math.PI*2);
+      ctx.ellipse(x+ox, y+oy, rr, rr*(.78 + rnd()*.34), a, 0, Math.PI*2);
       ctx.fill();
     }
   }
@@ -363,15 +370,22 @@ function sceneStars(P) {
   }
 
   function moon(){
-    var mx = W*.78, my = H*.16, r = Math.min(W, H)*.055;
-    var g = ctx.createRadialGradient(mx, my, 0, mx, my, r*7);
-    g.addColorStop(0, "rgba(" + P.moon + ",.22)"); g.addColorStop(1, "rgba(" + P.moon + ",0)");
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(mx, my, r*7, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = "rgba(" + P.moon + ",.92)";
-    ctx.beginPath();
-    ctx.arc(mx, my, r, 0, Math.PI*2);
-    ctx.arc(mx + r*.46, my - r*.10, r*.94, 0, Math.PI*2, true);
-    ctx.fill();
+    var mx = W*.79, my = H*.115, r = Math.min(W, H)*.070;
+    var g = ctx.createRadialGradient(mx, my, 0, mx, my, r*6);
+    g.addColorStop(0, "rgba(" + P.moon + ",.20)"); g.addColorStop(1, "rgba(" + P.moon + ",0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(mx, my, r*6, 0, Math.PI*2); ctx.fill();
+    // Lưỡi liềm vẽ trên canvas phụ rồi khoét bằng destination-out.
+    // Không dùng hai ctx.arc() trong cùng một path: lần arc thứ hai tự nối
+    // một đoạn thẳng từ điểm cuối, làm sai winding và ra hình vành khuyên.
+    var box = Math.ceil(r*3), c = box/2;
+    var mcv = document.createElement("canvas");
+    mcv.width = box; mcv.height = box;
+    var mc = mcv.getContext("2d");
+    mc.fillStyle = "rgba(" + P.moon + ",.88)";
+    mc.beginPath(); mc.arc(c, c, r, 0, Math.PI*2); mc.fill();
+    mc.globalCompositeOperation = "destination-out";
+    mc.beginPath(); mc.arc(c + r*.58, c - r*.05, r*1.15, 0, Math.PI*2); mc.fill();
+    ctx.drawImage(mcv, mx - c, my - c);
   }
 
   function paint(){
@@ -487,59 +501,64 @@ function sceneDeco(P) {
 
     var cx = W/2, S = Math.min(W, H);
 
-    // nan quạt toả từ đáy
+    // nan quạt toả từ đáy — hiện rõ hai bên tấm thiệp
     ctx.save();
-    ctx.strokeStyle = "rgba(" + P.gold + ",.16)"; ctx.lineWidth = 1;
-    for(var i = 0; i <= 26; i++){
-      var a = Math.PI + (i/26)*Math.PI;
-      ctx.beginPath(); ctx.moveTo(cx, H);
-      ctx.lineTo(cx + Math.cos(a)*S*1.25, H + Math.sin(a)*S*1.25); ctx.stroke();
+    ctx.strokeStyle = "rgba(" + P.gold + ",.26)"; ctx.lineWidth = 1;
+    for(var i = 0; i <= 30; i++){
+      var a = Math.PI + (i/30)*Math.PI;
+      ctx.beginPath(); ctx.moveTo(cx, H*1.02);
+      ctx.lineTo(cx + Math.cos(a)*S*1.5, H*1.02 + Math.sin(a)*S*1.5); ctx.stroke();
     }
     ctx.restore();
 
-    // cung tròn đồng tâm phía trên
-    ctx.strokeStyle = "rgba(" + P.gold + ",.22)";
-    for(var k = 0; k < 5; k++){
-      ctx.lineWidth = k % 2 ? .8 : 1.4;
-      ctx.beginPath(); ctx.arc(cx, H*.20, S*(.30 + k*.085), Math.PI*1.06, Math.PI*1.94); ctx.stroke();
+    // cung tròn quét ngang phần trên, tâm nằm ngoài khung nên không bị thiệp che
+    for(var k = 0; k < 4; k++){
+      ctx.strokeStyle = "rgba(" + P.gold + "," + (k % 2 ? .22 : .38) + ")";
+      ctx.lineWidth = k % 2 ? .9 : 1.5;
+      ctx.beginPath();
+      ctx.arc(cx, -H*.22, S*(.52 + k*.11), Math.PI*.24, Math.PI*.76);
+      ctx.stroke();
     }
 
-    // khung vòm lớn giữa trang
-    var aw = S*.62, ax = cx - aw/2, atop = H*.24, abot = H*.86, rr = aw/2;
-    ctx.strokeStyle = "rgba(" + P.gold + ",.30)"; ctx.lineWidth = 1.6;
-    ctx.beginPath();
-    ctx.moveTo(ax, abot); ctx.lineTo(ax, atop + rr);
-    ctx.arc(cx, atop + rr, rr, Math.PI, 0);
-    ctx.lineTo(ax + aw, abot); ctx.stroke();
-    ctx.strokeStyle = "rgba(" + P.gold + ",.16)"; ctx.lineWidth = .9;
-    ctx.beginPath();
-    ctx.moveTo(ax + 10, abot); ctx.lineTo(ax + 10, atop + rr);
-    ctx.arc(cx, atop + rr, rr - 10, Math.PI, 0);
-    ctx.lineTo(ax + aw - 10, abot); ctx.stroke();
+    // hoạ tiết bậc thang bốn góc
+    function corner(px, py, sx, sy){
+      for(var c = 0; c < 3; c++){
+        var o = 16 + c*14, len = 78 - c*18;
+        ctx.strokeStyle = "rgba(" + P.gold + "," + (.42 - c*.09).toFixed(2) + ")";
+        ctx.lineWidth = 1.5 - c*.3;
+        ctx.beginPath();
+        ctx.moveTo(px + sx*o, py + sy*(o + len));
+        ctx.lineTo(px + sx*o, py + sy*o);
+        ctx.lineTo(px + sx*(o + len), py + sy*o);
+        ctx.stroke();
+      }
+    }
+    corner(0, 0, 1, 1); corner(W, 0, -1, 1);
+    corner(0, H, 1, -1); corner(W, H, -1, -1);
 
-    // đường kẻ đôi hai bên
-    ctx.strokeStyle = "rgba(" + P.gold + ",.20)"; ctx.lineWidth = 1;
-    [22, 28].forEach(function(d){
+    // đường kẻ đôi sát mép
+    ctx.strokeStyle = "rgba(" + P.gold + ",.30)"; ctx.lineWidth = 1;
+    [9, 14].forEach(function(d){
       ctx.beginPath(); ctx.moveTo(d, 0); ctx.lineTo(d, H); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(W - d, 0); ctx.lineTo(W - d, H); ctx.stroke();
     });
 
-    // kim cương trang trí
-    ctx.strokeStyle = "rgba(" + P.gold + ",.30)"; ctx.lineWidth = 1;
-    for(var d = 0; d < 9; d++){
-      diamond(25, H*(.10 + d*.10), 6, null);
-      diamond(W - 25, H*(.10 + d*.10), 6, null);
+    // cột kim cương hai bên
+    ctx.strokeStyle = "rgba(" + P.gold + ",.40)"; ctx.lineWidth = 1;
+    for(var d = 0; d < 8; d++){
+      var dy = H*(.16 + d*.096);
+      diamond(11.5, dy, 7, null);
+      diamond(W - 11.5, dy, 7, null);
     }
-    diamond(cx, atop + rr - S*.31 - 16, 9, "rgba(" + P.gold + ",.34)");
 
     // hạt vàng rải nhẹ
-    for(var s = 0; s < 40; s++){
-      ctx.fillStyle = "rgba(" + P.gold + "," + (.06 + rnd()*.14).toFixed(3) + ")";
+    for(var s = 0; s < 44; s++){
+      ctx.fillStyle = "rgba(" + P.gold + "," + (.08 + rnd()*.18).toFixed(3) + ")";
       ctx.beginPath(); ctx.arc(rnd()*W, rnd()*H, .8 + rnd()*1.6, 0, Math.PI*2); ctx.fill();
     }
 
-    var vg = ctx.createRadialGradient(cx, H*.44, S*.28, cx, H*.5, Math.max(W,H)*.85);
-    vg.addColorStop(0, "rgba(" + P.vig + ",0)"); vg.addColorStop(1, "rgba(" + P.vig + ",.20)");
+    var vg = ctx.createRadialGradient(cx, H*.44, S*.30, cx, H*.5, Math.max(W,H)*.85);
+    vg.addColorStop(0, "rgba(" + P.vig + ",0)"); vg.addColorStop(1, "rgba(" + P.vig + ",.22)");
     ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
 
     driftInit();

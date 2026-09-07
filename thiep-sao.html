@@ -768,15 +768,22 @@
   }
 
   function moon(){
-    var mx = W*.78, my = H*.16, r = Math.min(W, H)*.055;
-    var g = ctx.createRadialGradient(mx, my, 0, mx, my, r*7);
-    g.addColorStop(0, "rgba(" + P.moon + ",.22)"); g.addColorStop(1, "rgba(" + P.moon + ",0)");
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(mx, my, r*7, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = "rgba(" + P.moon + ",.92)";
-    ctx.beginPath();
-    ctx.arc(mx, my, r, 0, Math.PI*2);
-    ctx.arc(mx + r*.46, my - r*.10, r*.94, 0, Math.PI*2, true);
-    ctx.fill();
+    var mx = W*.79, my = H*.115, r = Math.min(W, H)*.070;
+    var g = ctx.createRadialGradient(mx, my, 0, mx, my, r*6);
+    g.addColorStop(0, "rgba(" + P.moon + ",.20)"); g.addColorStop(1, "rgba(" + P.moon + ",0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(mx, my, r*6, 0, Math.PI*2); ctx.fill();
+    // Lưỡi liềm vẽ trên canvas phụ rồi khoét bằng destination-out.
+    // Không dùng hai ctx.arc() trong cùng một path: lần arc thứ hai tự nối
+    // một đoạn thẳng từ điểm cuối, làm sai winding và ra hình vành khuyên.
+    var box = Math.ceil(r*3), c = box/2;
+    var mcv = document.createElement("canvas");
+    mcv.width = box; mcv.height = box;
+    var mc = mcv.getContext("2d");
+    mc.fillStyle = "rgba(" + P.moon + ",.88)";
+    mc.beginPath(); mc.arc(c, c, r, 0, Math.PI*2); mc.fill();
+    mc.globalCompositeOperation = "destination-out";
+    mc.beginPath(); mc.arc(c + r*.58, c - r*.05, r*1.15, 0, Math.PI*2); mc.fill();
+    ctx.drawImage(mcv, mx - c, my - c);
   }
 
   function paint(){

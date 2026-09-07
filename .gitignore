@@ -1,0 +1,10 @@
+# Rác hệ điều hành
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Node
+node_modules/
+
+# Bỏ dấu # ở dòng dưới nếu không muốn đưa file PDF gốc (5,8 MB) lên git
+# Vow Ceremony Lam & Nhi_211126.pdf

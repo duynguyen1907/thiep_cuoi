@@ -762,12 +762,19 @@
     ctx.fill(); ctx.restore();
   }
   function rose(x, y, r, col, core){
-    for(var i = 6; i >= 1; i--){
-      var rr = r*i/6;
-      var g = ctx.createRadialGradient(x, y, rr*.2, x, y, rr);
-      g.addColorStop(0, core); g.addColorStop(.7, col); g.addColorStop(1, "rgba(255,255,255,0)");
+    // nền loang mềm
+    var g0 = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g0.addColorStop(0, core); g0.addColorStop(.5, col); g0.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = g0; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+    // các cánh lệch tâm, xoay dần — tránh tạo vân tròn đồng tâm
+    for(var i = 0; i < 5; i++){
+      var rr = r * (.80 - i*.13);
+      var a  = i*2.3 + rnd()*.8;
+      var ox = Math.cos(a)*r*.20, oy = Math.sin(a)*r*.20;
+      var g = ctx.createRadialGradient(x+ox, y+oy, 0, x+ox, y+oy, rr);
+      g.addColorStop(0, core); g.addColorStop(.62, col); g.addColorStop(1, "rgba(255,255,255,0)");
       ctx.fillStyle = g; ctx.beginPath();
-      ctx.arc(x + (i%2 ? rr*.08 : -rr*.08), y + (i%3 ? rr*.06 : -rr*.06), rr, 0, Math.PI*2);
+      ctx.ellipse(x+ox, y+oy, rr, rr*(.78 + rnd()*.34), a, 0, Math.PI*2);
       ctx.fill();
     }
   }
