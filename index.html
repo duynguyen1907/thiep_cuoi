@@ -12,17 +12,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Be+Vietnam+Pro:wght@200;300;400;500;600&family=Parisienne&display=swap">
 <style>
   /* ==================================================================
-     BẢNG MÀU — teal · sông Sài Gòn
+     BẢNG MÀU — đen & vàng kim · sông Sài Gòn
      ================================================================== */
   :root{
-    --bg:#0B4553;          --contrast:#062A36;
-    --accent:#7FC1CB;      --accent-glow:rgba(127,193,203,.16);
-    --accent-line:rgba(127,193,203,.35);
-    --cream:#F6FAFB;
-    --ink:#F1F8F9;         --ink-soft:rgba(241,248,249,.72);  --ink-faint:rgba(241,248,249,.52);
-    --line:rgba(214,233,236,.30);
-    --glass:rgba(9,58,71,.34);   --glass-strong:rgba(8,52,64,.46);   --glass-edge:rgba(190,224,230,.28);
-    --shadow:rgba(0,20,28,.82);  --inner:rgba(214,233,236,.12);
+    --bg:#111214;          --contrast:#0A0A0B;
+    --accent:#C9A961;      --accent-glow:rgba(201,169,97,.18);
+    --accent-line:rgba(201,169,97,.40);
+    --cream:#F5F1E8;
+    --ink:#F2EFE7;         --ink-soft:rgba(242,239,231,.72);  --ink-faint:rgba(242,239,231,.50);
+    --line:rgba(201,169,97,.28);
+    --glass:rgba(10,10,12,.44);   --glass-strong:rgba(8,8,10,.58);   --glass-edge:rgba(201,169,97,.24);
+    --shadow:rgba(0,0,0,.88);  --inner:rgba(201,169,97,.14);
     --tint:rgba(255,255,255,.04);      --tint-in:rgba(255,255,255,.06);      --tint-focus:rgba(255,255,255,.10);
     --sheen:rgba(255,255,255,.14);    --ring:rgba(255,255,255,.38);
   }
@@ -742,7 +742,7 @@
   var cv = el("bg"), ctx = cv.getContext("2d");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var W, H, HZ, seed = 21;
-  var P = {"sky":["#05323F","#0C5568","#177C8E","#3FA0AE"],"water":["#2E8595","#125E70","#052936"],"cloud":"190,226,232","bld":"6,44,56","win":"232,240,214","ripple":"214,240,244","beam":"230,246,248","mote":"226,244,247","vig":"2,26,34"};
+  var P = {"sky":["#030304","#0A0B0D","#141519","#262830"],"water":["#1E2127","#0D0F13","#020203"],"cloud":"201,169,97","bld":"0,0,0","win":"255,214,140","ripple":"214,196,156","beam":"232,214,170","mote":"226,200,150","vig":"0,0,0"};
 
   function rnd(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
 

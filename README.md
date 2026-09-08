@@ -12,12 +12,12 @@ Thiệp mời dạng web, song ngữ Anh – Việt. Mỗi file là một bản 
 
 <table>
 <tr>
-<td width="50%"><img src="preview/index.png" width="100%"><br><b>index.html</b> — Teal · sông Sài Gòn<br><i>Tông theo đúng thiệp giấy</i></td>
+<td width="50%"><img src="preview/index.png" width="100%"><br><b>index.html</b> — Đen &amp; vàng kim · sông Sài Gòn<br><i>Bản chính thức</i></td>
 <td width="50%"><img src="preview/thiep-xanh-la.png" width="100%"><br><b>thiep-xanh-la.html</b> — Xanh lá · sông Sài Gòn</td>
 </tr>
 <tr>
 <td><img src="preview/thiep-do.png" width="100%"><br><b>thiep-do.html</b> — Đỏ hoàng hôn · sông Sài Gòn</td>
-<td><img src="preview/thiep-den.png" width="100%"><br><b>thiep-den.html</b> — Đen &amp; vàng kim · sông Sài Gòn</td>
+<td><img src="preview/thiep-teal.png" width="100%"><br><b>thiep-teal.html</b> — Teal · sông Sài Gòn<br><i>Tông theo đúng thiệp giấy</i></td>
 </tr>
 <tr>
 <td><img src="preview/thiep-hoa.png" width="100%"><br><b>thiep-hoa.html</b> — Nền sáng · vườn hoa màu nước</td>
@@ -55,7 +55,7 @@ Bìa mở thiệp → tên cô dâu chú rể → dải lịch tháng 11 (ngày 
 ## Dùng thế nào
 
 1. Mở thử cả 8 file bằng trình duyệt, chọn một tông.
-2. Đổi tên file đó thành `index.html` (ghi đè bản teal), xoá các file còn lại.
+2. Đổi tên file đó thành `index.html` (ghi đè bản đen & vàng kim), xoá các file còn lại.
 3. Gửi link cho khách.
 
 ---
@@ -75,7 +75,7 @@ Cả 8 file sinh lại cùng lúc, không lo lệch nhau. Cần Node.js, không 
 Chụp lại ảnh xem trước (cần Chrome):
 
 ```bash
-for f in index thiep-xanh-la thiep-do thiep-den thiep-hoa thiep-song thiep-sao thiep-deco; do
+for f in index thiep-teal thiep-xanh-la thiep-do thiep-hoa thiep-song thiep-sao thiep-deco; do
   chrome --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4500 \
          --screenshot="preview/$f.png" "file://$PWD/$f.html"
 done

@@ -624,7 +624,7 @@ const RIVER = {
 };
 
 const THEMES = [
-  { file:'index.html', label:'teal · sông Sài Gòn', scheme:'dark', surf:DARK,
+  { file:'thiep-teal.html', label:'teal · sông Sài Gòn', scheme:'dark', surf:DARK,
     scene: sceneRiver(RIVER.teal),
     t:{ bg:'#0B4553', contrast:'#062A36', accent:'#7FC1CB',
         glow:'rgba(127,193,203,.16)', aline:'rgba(127,193,203,.35)', cream:'#F6FAFB',
@@ -648,7 +648,7 @@ const THEMES = [
         line:'rgba(240,215,196,.30)', glass:'rgba(56,12,16,.38)', glassS:'rgba(48,10,14,.52)',
         glassE:'rgba(232,192,166,.26)', shadow:'rgba(24,4,6,.84)', inner:'rgba(240,215,196,.12)' } },
 
-  { file:'thiep-den.html', label:'đen & vàng kim · sông Sài Gòn', scheme:'dark', surf:DARK,
+  { file:'index.html', label:'đen & vàng kim · sông Sài Gòn', scheme:'dark', surf:DARK,
     scene: sceneRiver(RIVER.black),
     t:{ bg:'#111214', contrast:'#0A0A0B', accent:'#C9A961',
         glow:'rgba(201,169,97,.18)', aline:'rgba(201,169,97,.40)', cream:'#F5F1E8',
