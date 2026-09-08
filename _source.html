@@ -268,6 +268,7 @@
     font-family:var(--display);font-size:16px;color:var(--accent);
     font-variant-numeric:tabular-nums;letter-spacing:.06em;
   }
+  .tl time small{display:block;font-size:12px;letter-spacing:.04em;color:var(--ink-faint);margin-top:1px}
   .tl .d{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
   .tl .d em{display:block;font-style:italic;font-family:var(--display);font-size:15px;color:var(--ink-faint);margin-top:2px}
   .tl .row.mark time,.tl .row.mark .d{color:var(--cream)}
@@ -281,28 +282,6 @@
   .contact{text-align:center;margin:18px 0 0;font-size:13px;color:var(--ink-faint)}
   .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-line)}
   .contact a:hover{color:var(--cream);border-color:var(--cream)}
-
-  /* ---------- sổ lưu bút ---------- */
-  form{display:grid;gap:14px;margin-top:22px}
-  .field{display:grid;gap:7px}
-  .field > label{
-    font-family:var(--body);font-weight:400;font-size:10px;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
-  }
-  input[type=text],textarea{
-    width:100%;font-family:var(--body);font-size:15px;font-weight:300;color:var(--ink);
-    background:var(--tint-in);border:1px solid var(--line);border-radius:2px;padding:11px 13px;
-  }
-  input::placeholder,textarea::placeholder{color:var(--ink-faint);opacity:.7}
-  input:focus,textarea:focus{outline:none;border-color:var(--accent);background:var(--tint-focus)}
-  textarea{min-height:88px;resize:vertical;line-height:1.6}
-  .wishes{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
-  .wishes li{background:var(--tint);border-radius:2px;padding:13px 15px;border-left:2px solid var(--accent)}
-  .wishes .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:5px}
-  .wishes b{font-family:var(--display);font-weight:500;font-size:17px;color:var(--cream);letter-spacing:.02em}
-  .wishes small{font-size:10.5px;color:var(--ink-faint);font-variant-numeric:tabular-nums;letter-spacing:.06em;flex:none}
-  .wishes .msg{font-size:14px;color:var(--ink-soft);line-height:1.6}
-  .wishes-empty{text-align:center;font-family:var(--display);font-style:italic;color:var(--ink-faint);margin:22px 0 0;font-size:16px}
 
   /* ---------- closing ---------- */
   .closing{text-align:center;padding:34px 18px 12px}
@@ -456,9 +435,9 @@
         <span class="ic"><svg viewBox="0 0 34 34"><path d="M9 5h7l-1.4 8a2.1 2.1 0 0 1-4.2 0zM12.5 16v11M9.5 28.5h6M18 5h7l-1.4 8a2.1 2.1 0 0 1-4.2 0zM21.5 16v11M18.5 28.5h6"/></svg></span>
         <span class="dot"></span>
         <div>
-          <h3>Welcome Drink<span class="vi">Đón khách</span></h3>
+          <h3>Welcome &amp; Drink<span class="vi">Đón khách</span></h3>
           <div class="rows">
-            <div class="row"><time>17:00</time><div class="d">Guest check-in · Welcome drinks<em>Khách nhận chỗ, dùng nước chào mừng</em></div></div>
+            <div class="row"><time>17:00</time><div class="d">Check-in &amp; Welcome drink<em>Đón khách và đồ uống khai tiệc</em></div></div>
           </div>
         </div>
       </li>
@@ -469,7 +448,7 @@
         <div>
           <h3>Vow Ceremony<span class="vi">Nghi lễ trao lời thề</span></h3>
           <div class="rows">
-            <div class="row"><time>17:30</time><div class="d">Processional · Exchange of vows &amp; rings<em>Rước dâu, trao lời thề và nhẫn cưới</em></div></div>
+            <div class="row"><time>17:30</time><div class="d">Vow ceremony<em>Cử hành lễ Vow</em></div></div>
           </div>
         </div>
       </li>
@@ -478,11 +457,11 @@
         <span class="ic"><svg viewBox="0 0 34 34"><circle cx="19" cy="17" r="9"/><path d="M15.5 15.5c1.2-1.6 3.6-1.3 3.5.7 0-2 2.3-2.3 3.5-.7.9 1.2-.4 3-3.5 5-3.1-2-4.4-3.8-3.5-5zM7 6v9a2.5 2.5 0 0 0 5 0V6M9.5 17.5V28"/></svg></span>
         <span class="dot"></span>
         <div>
-          <h3>Free Time &amp; Dinner Service<span class="vi">Tự do &amp; phục vụ bữa tối</span></h3>
+          <h3>Free Time &amp; Dinner<span class="vi">Tự do &amp; bữa tối</span></h3>
           <div class="rows">
-            <div class="row"><time>18:00</time><div class="d">Guests enjoy free time, take photos, and relax<em>Khách tự do chụp ảnh và nghỉ ngơi</em></div></div>
-            <div class="row mark"><time>19:00</time><div class="d">All guests return to the cruise at 19:10<em>Toàn bộ khách quay lại tàu lúc 19:10</em></div></div>
-            <div class="row"><time>19:20</time><div class="d">The cruise sets sail for night views while dinner is served alongside live music<em>Tàu khởi hành ngắm cảnh đêm, dùng bữa cùng nhạc sống</em></div></div>
+            <div class="row"><time>18:00<small>~ 19:00</small></time><div class="d">Free time, take pictures and relax<em>Tự do đi lại, chụp ảnh và thư giãn</em></div></div>
+            <div class="row mark"><time>19:10</time><div class="d">Everyone to get back to the ship to set sail<em>Quay lại tàu để bắt đầu khởi hành</em></div></div>
+            <div class="row"><time>19:20</time><div class="d">Dinner on the cruise<em>Dùng bữa tối trên tàu</em></div></div>
           </div>
         </div>
       </li>
@@ -493,7 +472,7 @@
         <div>
           <h3>Docking &amp; Guest Farewell<span class="vi">Cập bến &amp; tiễn khách</span></h3>
           <div class="rows">
-            <div class="row"><time>21:30</time><div class="d">Cruise returns to the dock. Bye bye ~<em>Tàu về bến, hẹn gặp lại</em></div></div>
+            <div class="row"><time>21:30</time><div class="d">The end of the cruise<em>Tàu cập bến kết thúc chuyến đi</em></div></div>
           </div>
         </div>
       </li>
@@ -521,28 +500,6 @@
     <p class="contact" id="contact-line" hidden>
       Hoặc liên hệ trực tiếp · <a id="contact-a" href="#"></a>
     </p>
-  </section>
-
-  <!-- ---- sổ lưu bút ---- -->
-  <section class="sheet rv">
-    <p class="caps kicker">Guest Book<span class="vi">Sổ lưu bút</span></p>
-    <h2>Gửi lời chúc</h2>
-    <p class="center faint" style="font-size:13.5px;margin:0">
-      Để lại đôi dòng cho Duy Lâm &amp; Yến Nhi nhé.
-    </p>
-    <form id="wish-form">
-      <div class="field">
-        <label for="f-name">Tên của bạn · Your name</label>
-        <input type="text" id="f-name" name="name" required maxlength="60" autocomplete="name" placeholder="Ví dụ: Gia đình cô Lan">
-      </div>
-      <div class="field">
-        <label for="f-wish">Lời chúc · Your wishes</label>
-        <textarea id="f-wish" name="wish" required maxlength="400" placeholder="Chúc hai bạn trăm năm hạnh phúc…"></textarea>
-      </div>
-      <button class="btn" type="submit" style="justify-self:center">Gửi lời chúc</button>
-    </form>
-    <ul class="wishes" id="wishes"></ul>
-    <p class="wishes-empty" id="wishes-empty">Lời chúc của bạn sẽ hiện ở đây.</p>
   </section>
 
   <footer class="closing rv">
@@ -577,7 +534,7 @@
     mapQuery:  "Saigon Princess Cruise, 05 Nguyễn Tất Thành, Quận 4, TP. Hồ Chí Minh",
 
     // ↓↓↓ DÁN LINK GOOGLE FORM "Danh sách khách mời tham dự Vow" VÀO ĐÂY ↓↓↓
-    rsvpForm:  "https://docs.google.com/forms/d/e/1FAIpQLSdnlyF4VUpO2mZyjDgCkca75WFa-DEVQFUpTjRhyORTOTCyvg/viewform",
+    rsvpForm:  "https://docs.google.com/forms/d/e/1FAIpQLScdW8r94ftYXkWdtt5J730E__v6TN4b7uQfaZZpe5Dk4cWrEA/viewform",
 
     // Hạn phản hồi hiển thị dưới nút RSVP
     deadline:  "01.11.2026",
@@ -659,51 +616,6 @@
     ca.href = "tel:" + CFG.contactTel.replace(/\s+/g, "");
     el("contact-line").hidden = false;
   }
-
-  // ---------- sổ lưu bút (lưu trên máy khách) ----------
-  var KEY = "vow-lam-nhi-wishes";
-  var wishesUl = el("wishes"), wishesEmpty = el("wishes-empty"), form = el("wish-form");
-
-  function loadWishes(){
-    try{ var a = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(a) ? a : []; }
-    catch(e){ return []; }
-  }
-  function renderWishes(){
-    var list = loadWishes();
-    wishesUl.innerHTML = "";
-    wishesEmpty.hidden = list.length > 0;
-    list.slice().reverse().forEach(function(w){
-      var li = document.createElement("li");
-      var hd = document.createElement("div"); hd.className = "hd";
-      var b  = document.createElement("b");   b.textContent = w.name;
-      var sm = document.createElement("small"); sm.textContent = w.time;
-      hd.appendChild(b); hd.appendChild(sm);
-      var msg = document.createElement("div"); msg.className = "msg"; msg.textContent = w.wish;
-      li.appendChild(hd); li.appendChild(msg);
-      wishesUl.appendChild(li);
-    });
-  }
-  renderWishes();
-
-  form.addEventListener("submit", function(ev){
-    ev.preventDefault();
-    var fd   = new FormData(form);
-    var name = (fd.get("name") || "").toString().trim();
-    var wish = (fd.get("wish") || "").toString().trim();
-    if(!name || !wish){ say("Bạn điền giúp tên và lời chúc nhé."); return; }
-
-    var now  = new Date();
-    var list = loadWishes();
-    list.push({
-      name: name,
-      wish: wish,
-      time: pad(now.getDate()) + "." + pad(now.getMonth() + 1) + "." + now.getFullYear()
-    });
-    try{ localStorage.setItem(KEY, JSON.stringify(list.slice(-30))); }catch(e){}
-    renderWishes();
-    form.reset();
-    say("Cảm ơn bạn — lời chúc đã được ghi lại!");
-  });
 
   // ---------- hiệu ứng hiện dần ----------
   var revealed = false;

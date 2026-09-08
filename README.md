@@ -18,18 +18,18 @@ Thiệp mời dạng web, song ngữ Anh – Việt, một file `index.html` t�
 
 Bìa mở thiệp → tên cô dâu chú rể → dải lịch tháng 11 (ngày 21 đóng dấu tim *limited edition*)
 → giờ &amp; địa điểm + nút chỉ đường → đếm ngược + thêm vào lịch → dress code
-→ lịch trình 4 chặng → xác nhận tham dự → sổ lưu bút → lời cảm ơn.
+→ lịch trình 4 chặng → xác nhận tham dự → lời cảm ơn.
 
 **Lịch trình buổi lễ**
 
 | Giờ | Nội dung |
 |---|---|
-| 17:00 | Welcome drink — đón khách, nước chào mừng |
-| 17:30 | Vow Ceremony — trao lời thề và nhẫn cưới |
-| 18:00 | Tự do chụp ảnh, nghỉ ngơi |
-| **19:00** | **Toàn bộ khách quay lại tàu lúc 19:10** |
-| 19:20 | Tàu khởi hành ngắm cảnh đêm, dùng bữa cùng nhạc sống |
-| 21:30 | Cập bến, tiễn khách |
+| 17:00 | Welcome & Drink — đón khách và đồ uống khai tiệc |
+| 17:30 | Vow Ceremony — cử hành lễ Vow |
+| 18:00 ~ 19:00 | Tự do đi lại, chụp ảnh và thư giãn |
+| **19:10** | **Quay lại tàu để bắt đầu khởi hành** |
+| 19:20 | Dùng bữa tối trên tàu |
+| 21:30 | Tàu cập bến, kết thúc chuyến đi |
 
 ---
 
@@ -84,7 +84,6 @@ Trong phần cài đặt Form nhớ **tắt** "Giới hạn 1 phản hồi" và 
 - **Không có file ảnh nào.** Toàn bộ nền được vẽ bằng Canvas 2D lúc trang chạy. Mỗi file `.html` tự chứa đủ HTML, CSS và JavaScript.
 - Thứ duy nhất tải từ ngoài là **font Google** (Cormorant Garamond, Be Vietnam Pro, Parisienne). Không có mạng thì chữ lùi về font hệ thống, bố cục vẫn nguyên.
 - Ngày giờ được neo cứng theo **giờ Việt Nam (UTC+7)**, nên khách ở múi giờ khác vẫn thấy đúng đếm ngược và đúng sự kiện khi bấm "Thêm vào lịch".
-- Sổ lưu bút lưu bằng `localStorage` — lời chúc chỉ hiện trên máy người viết, không gửi về đâu cả. Muốn thu thập thật thì dùng Google Form.
 - Có tôn trọng `prefers-reduced-motion`: ai bật chế độ giảm chuyển động thì nền đứng yên.
 
 ---
