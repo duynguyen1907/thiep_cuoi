@@ -4,32 +4,13 @@
 Thứ Bảy, 21 tháng 11 năm 2026 · 17:00
 Sundeck Saigon Princess — Saigon Port, 05 Nguyễn Tất Thành, P. Xóm Chiếu, TP. Hồ Chí Minh
 
-Thiệp mời dạng web, song ngữ Anh – Việt. Mỗi file là một bản hoàn chỉnh, chỉ khác tông màu và cảnh nền.
+Thiệp mời dạng web, song ngữ Anh – Việt, một file `index.html` tự chứa đủ HTML, CSS và JavaScript.
 
 ---
 
-## 8 phiên bản
+## Xem trước
 
-<table>
-<tr>
-<td width="50%"><img src="preview/index.png" width="100%"><br><b>index.html</b> — Đen &amp; vàng kim · sông Sài Gòn<br><i>Bản chính thức</i></td>
-<td width="50%"><img src="preview/thiep-xanh-la.png" width="100%"><br><b>thiep-xanh-la.html</b> — Xanh lá · sông Sài Gòn</td>
-</tr>
-<tr>
-<td><img src="preview/thiep-do.png" width="100%"><br><b>thiep-do.html</b> — Đỏ hoàng hôn · sông Sài Gòn</td>
-<td><img src="preview/thiep-teal.png" width="100%"><br><b>thiep-teal.html</b> — Teal · sông Sài Gòn<br><i>Tông theo đúng thiệp giấy</i></td>
-</tr>
-<tr>
-<td><img src="preview/thiep-hoa.png" width="100%"><br><b>thiep-hoa.html</b> — Nền sáng · vườn hoa màu nước</td>
-<td><img src="preview/thiep-song.png" width="100%"><br><b>thiep-song.html</b> — Navy · sóng biển chuyển động</td>
-</tr>
-<tr>
-<td><img src="preview/thiep-sao.png" width="100%"><br><b>thiep-sao.html</b> — Tím đêm · trời đầy sao</td>
-<td><img src="preview/thiep-deco.png" width="100%"><br><b>thiep-deco.html</b> — Kem &amp; vàng đồng · art deco</td>
-</tr>
-</table>
-
-Ảnh trong `preview/` chỉ để xem trước, **thiệp không dùng đến chúng**.
+<img src="preview/index.png" width="420"><br><b>index.html</b> — Đen & vàng kim · sông Sài Gòn
 
 ---
 
@@ -54,9 +35,7 @@ Bìa mở thiệp → tên cô dâu chú rể → dải lịch tháng 11 (ngày 
 
 ## Dùng thế nào
 
-1. Mở thử cả 8 file bằng trình duyệt, chọn một tông.
-2. Đổi tên file đó thành `index.html` (ghi đè bản đen & vàng kim), xoá các file còn lại.
-3. Gửi link cho khách.
+Thiệp chính thức là **`index.html`**, tông đen & vàng kim. Đưa lên GitHub Pages rồi gửi link cho khách (xem cuối trang).
 
 ---
 
@@ -70,15 +49,13 @@ Sửa `_source.html` rồi chạy:
 node build.js
 ```
 
-Cả 8 file sinh lại cùng lúc, không lo lệch nhau. Cần Node.js, không cần cài thêm gói nào.
+Cần Node.js, không cần cài thêm gói nào.
 
 Chụp lại ảnh xem trước (cần Chrome):
 
 ```bash
-for f in index thiep-teal thiep-xanh-la thiep-do thiep-hoa thiep-song thiep-sao thiep-deco; do
-  chrome --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4500 \
-         --screenshot="preview/$f.png" "file://$PWD/$f.html"
-done
+chrome --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4500 \
+       --screenshot="preview/index.png" "file://$PWD/index.html"
 ```
 
 ---
