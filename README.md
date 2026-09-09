@@ -60,7 +60,7 @@ chrome --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4500
 
 ---
 
-## Còn phải điền
+## Cấu hình thiệp
 
 Mở **`_source.html`**, tìm khối `var CFG = {` ở gần cuối, sửa xong nhớ chạy lại
 `node build.js`. Đừng sửa thẳng trong `index.html` — lần build sau sẽ ghi đè.
@@ -69,11 +69,15 @@ Mở **`_source.html`**, tìm khối `var CFG = {` ở gần cuối, sửa xong 
 |---|---|
 | `rsvpForm` | ✅ đã gắn link Google Form |
 | `deadline` | ✅ `01.11.2026` — nên hỏi bên tàu chốt sổ trước bao nhiêu ngày |
-| `contactName` | ⬜ còn trống — vd: `"Duy Lâm"` |
-| `contactTel` | ⬜ còn trống — vd: `"0901234567"` |
+| `contactName` | ⬜ để trống — cố ý không hiện |
+| `contactTel` | ⬜ để trống — cố ý không hiện |
 
-Điền **cả hai** `contactName` và `contactTel` thì dòng liên hệ dự phòng mới hiện
-dưới nút RSVP; để trống một trong hai thì dòng đó vẫn ẩn.
+Phải điền **cả hai** `contactName` và `contactTel` thì dòng liên hệ dự phòng mới
+hiện dưới nút RSVP; để trống một trong hai thì dòng đó tự ẩn.
+
+> Hiện đang để trống có chủ đích: không đưa số điện thoại lên trang công khai,
+> khách cần liên hệ thì nhắn riêng. Nếu sau này muốn hiện lại thì điền cả hai ô
+> rồi chạy `node build.js`.
 
 Nếu sau này gỡ `rsvpForm` về chuỗi rỗng, nút "Xác nhận tham dự" sẽ hiện thông báo
 nhắc thay vì mở form.
@@ -104,9 +108,14 @@ git push
 Vào **Settings → Pages**, chọn nhánh và thư mục gốc. Vài phút sau link có dạng
 `https://<tên-tài-khoản>.github.io/<tên-repo>/`.
 
-Lưu ý: GitHub Pages là **công khai**, ai có link đều xem được và công cụ tìm kiếm có thể lập chỉ mục.
-Nếu không muốn bị tìm thấy qua Google, thêm dòng này vào `<head>` của file thiệp:
+Lưu ý: GitHub Pages là **công khai** — ai có link đều xem được.
+
+Trong `<head>` của `_source.html` đã có sẵn dòng này để Google không lập chỉ mục:
 
 ```html
 <meta name="robots" content="noindex, nofollow">
 ```
+
+Thẻ này chỉ ngăn trang xuất hiện trong kết quả tìm kiếm, **không** khoá trang lại:
+ai có link vẫn mở được bình thường. Ảnh xem trước khi gửi link qua Zalo/Messenger
+vẫn hiện, vì phần đó lấy từ các thẻ `og:` chứ không phụ thuộc `robots`.
