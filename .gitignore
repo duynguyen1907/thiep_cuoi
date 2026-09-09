@@ -6,5 +6,5 @@ desktop.ini
 # Node
 node_modules/
 
-# Bỏ dấu # ở dòng dưới nếu không muốn đưa file PDF gốc (5,8 MB) lên git
-# Vow Ceremony Lam & Nhi_211126.pdf
+# File PDF gốc của thiệp — không cần đưa lên git
+*.pdf

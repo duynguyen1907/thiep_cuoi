@@ -62,16 +62,21 @@ chrome --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4500
 
 ## Còn phải điền
 
-Mở file thiệp, tìm khối `var CFG = {` ở gần cuối:
+Mở **`_source.html`**, tìm khối `var CFG = {` ở gần cuối, sửa xong nhớ chạy lại
+`node build.js`. Đừng sửa thẳng trong `index.html` — lần build sau sẽ ghi đè.
 
-```js
-rsvpForm:    "",           // ← link Google Form "Danh sách khách mời tham dự Vow"
-deadline:    "01.11.2026", // hạn phản hồi — nên hỏi bên tàu chốt sổ trước bao nhiêu ngày
-contactName: "",           // vd: "Duy Lâm"
-contactTel:  ""            // vd: "0901234567" — điền cả hai thì hiện dòng liên hệ dự phòng
-```
+| Mục | Trạng thái |
+|---|---|
+| `rsvpForm` | ✅ đã gắn link Google Form |
+| `deadline` | ✅ `01.11.2026` — nên hỏi bên tàu chốt sổ trước bao nhiêu ngày |
+| `contactName` | ⬜ còn trống — vd: `"Duy Lâm"` |
+| `contactTel` | ⬜ còn trống — vd: `"0901234567"` |
 
-Chưa gắn `rsvpForm` thì nút "Xác nhận tham dự" sẽ hiện thông báo nhắc thay vì mở form.
+Điền **cả hai** `contactName` và `contactTel` thì dòng liên hệ dự phòng mới hiện
+dưới nút RSVP; để trống một trong hai thì dòng đó vẫn ẩn.
+
+Nếu sau này gỡ `rsvpForm` về chuỗi rỗng, nút "Xác nhận tham dự" sẽ hiện thông báo
+nhắc thay vì mở form.
 
 **Google Form nên có các cột:** họ tên · có/không tham dự · tổng số người · số điện thoại hoặc Zalo · có trẻ em không (mấy bé, bao nhiêu tuổi) · nhu cầu ăn uống đặc biệt · cần hướng dẫn đường vào bến tàu không · lời nhắn.
 
