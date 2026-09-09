@@ -82,7 +82,7 @@ Trong phần cài đặt Form nhớ **tắt** "Giới hạn 1 phản hồi" và 
 ## Ghi chú kỹ thuật
 
 - **Không có file ảnh nào.** Toàn bộ nền được vẽ bằng Canvas 2D lúc trang chạy. Mỗi file `.html` tự chứa đủ HTML, CSS và JavaScript.
-- Thứ duy nhất tải từ ngoài là **font Google** (Cormorant Garamond, Be Vietnam Pro, Parisienne). Không có mạng thì chữ lùi về font hệ thống, bố cục vẫn nguyên.
+- Thứ duy nhất tải từ ngoài là **font Google** (Cormorant Garamond, Be Vietnam Pro, Parisienne, Luxurious Script). Không có mạng thì chữ lùi về font hệ thống, bố cục vẫn nguyên.
 - Ngày giờ được neo cứng theo **giờ Việt Nam (UTC+7)**, nên khách ở múi giờ khác vẫn thấy đúng đếm ngược và đúng sự kiện khi bấm "Thêm vào lịch".
 - Có tôn trọng `prefers-reduced-motion`: ai bật chế độ giảm chuyển động thì nền đứng yên.
 
