@@ -194,9 +194,10 @@ function tokenBlock(th) {
 const out = [];
 for (const th of THEMES) {
   let html = src
-    .replace('/*__TOKENS__*/\n', tokenBlock(th))
+    // \r? để chạy được cả khi _source.html bị checkout ra CRLF trên Windows
+    .replace(/\/\*__TOKENS__\*\/\r?\n/, tokenBlock(th))
     .replace('/*__SCHEME__*/', `color-scheme: ${th.scheme};`)
-    .replace('/*__SCENE__*/\n', th.scene);
+    .replace(/\/\*__SCENE__\*\/\r?\n/, th.scene);
 
   for (const p of ['/*__TOKENS__*/', '/*__SCHEME__*/', '/*__SCENE__*/']) {
     if (html.includes(p)) throw new Error(`${th.file}: chưa thay ${p}`);

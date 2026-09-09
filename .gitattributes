@@ -1,0 +1,7 @@
+# build.js so khớp placeholder theo ký tự \n, nên working tree phải dùng LF.
+# Không có dòng này thì máy Windows (core.autocrlf=true) checkout ra CRLF
+# và `node build.js` báo lỗi "chưa thay /*__TOKENS__*/" ngay lần chạy đầu.
+* text=auto eol=lf
+
+*.pdf binary
+*.png binary
